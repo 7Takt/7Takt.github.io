@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#121315" />
+  <meta name="description" content="Ride into Param Srivatsva's birthday — 14 August 2026 at 5 PM, Zenith Flat No. 408." />
+  <title>Param's Midnight Drive</title>
+  <style>
+    :root {
+      --ink: #f6f1e8;
+      --paper: #ded8cc;
+      --muted: #96938d;
+      --asphalt: #121315;
+      --panel: #181a1d;
+      --line: rgba(255, 255, 255, .12);
+      --amber: #ffb14a;
+      --orange: #f16b39;
+      --red: #e74335;
+      --blue: #8eb3d1;
+      --green: #9ec6a3;
+      --shadow: 0 30px 90px rgba(0, 0, 0, .46);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 82% 14%, rgba(68, 78, 98, .22), transparent 28rem),
+        var(--asphalt);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      opacity: .055;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
+
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 1.25rem;
+      text-align: center;
+      background: linear-gradient(to bottom, #222b38 0%, #9a674d 43%, #241c1c 43.3%, #0c0d0f 100%);
+      transition: opacity .85s ease, visibility .85s ease;
+    }
+
+    .intro::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -28%;
+      width: min(68rem, 145vw);
+      height: 67%;
+      transform: translateX(-50%);
+      background: #161719;
+      clip-path: polygon(37% 0, 63% 0, 100% 100%, 0 100%);
+    }
+
+    .intro::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -4%;
+      width: .5rem;
+      height: 46%;
+      transform: translateX(-50%) perspective(300px) rotateX(18deg);
+      background: repeating-linear-gradient(to bottom, var(--amber) 0 2.5rem, transparent 2.5rem 5.3rem);
+      animation: roadMove .85s linear infinite;
+    }
+
+    .intro.is-gone { opacity: 0; visibility: hidden; }
+    .intro-inner { position: relative; z-index: 2; width: min(40rem, 100%); margin-top: -5vh; }
+
+    .key-mark {
+      display: grid;
+      place-items: center;
+      width: 5.7rem;
+      aspect-ratio: 1;
+      margin: 0 auto 1.7rem;
+      border: 1px solid rgba(255,255,255,.27);
+      border-radius: 50%;
+      background: rgba(12, 13, 15, .35);
+      box-shadow: inset 0 0 0 .65rem rgba(255,255,255,.035), 0 15px 45px rgba(0,0,0,.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .key-mark svg { width: 2.2rem; stroke: var(--amber); }
+
+    .kicker {
+      margin: 0 0 .8rem;
+      color: var(--amber);
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
+
+    .intro h1 {
+      margin: 0;
+      font: 400 clamp(3rem, 10vw, 6.5rem)/.86 Georgia, "Times New Roman", serif;
+      letter-spacing: -.055em;
+      text-wrap: balance;
+    }
+
+    .intro h1 em { color: #ffc26f; font-weight: 400; }
+    .intro-copy { margin: 1.3rem 0 1.8rem; color: rgba(255,255,255,.68); }
+
+    .start-btn, .action-btn, .ghost-btn, .rsvp-choice, .music-pill, .sound-btn {
+      border: 0;
+      cursor: pointer;
+      transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .start-btn, .action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .7rem;
+      min-height: 3.3rem;
+      padding: .85rem 1.3rem;
+      border-radius: .4rem;
+      color: #19130c;
+      background: var(--amber);
+      box-shadow: 0 12px 38px rgba(255, 177, 74, .18);
+      font-weight: 850;
+      letter-spacing: .03em;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: .74rem;
+    }
+
+    .start-btn:hover, .action-btn:hover { transform: translateY(-3px); background: #ffc46f; box-shadow: 0 16px 45px rgba(255, 177, 74, .28); }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+    .sound-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .65rem .85rem;
+      border: 1px solid var(--line);
+      border-radius: .35rem;
+      color: var(--ink);
+      background: rgba(13, 14, 16, .66);
+      backdrop-filter: blur(14px);
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .sound-icon { display: flex; align-items: end; gap: 2px; height: .8rem; }
+    .sound-icon i { width: 2px; height: 3px; border-radius: 2px; background: var(--amber); }
+    .sound-btn.is-playing .sound-icon i { animation: bars .75s ease-in-out infinite alternate; }
+    .sound-btn.is-playing .sound-icon i:nth-child(2) { animation-delay: -.4s; }
+    .sound-btn.is-playing .sound-icon i:nth-child(3) { animation-delay: -.2s; }
+
+    .page-shell { width: min(100%, 82rem); margin: auto; padding: 0 1.25rem 4rem; }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(28rem, 1.1fr);
+      gap: clamp(1rem, 5vw, 5rem);
+      align-items: center;
+      padding: 6.5rem 0 4rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 35rem;
+      aspect-ratio: 1;
+      right: -12rem;
+      top: 2rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 132, 61, .12), transparent 68%);
+    }
+
+    .route-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .47rem .65rem;
+      border: 1px solid var(--line);
+      border-radius: .3rem;
+      color: var(--paper);
+      background: rgba(255,255,255,.035);
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .route-chip i { width: .5rem; aspect-ratio: 1; border-radius: 50%; background: var(--red); box-shadow: 0 0 12px var(--red); }
+
+    .hero h1 {
+      margin: 1.3rem 0 1.5rem;
+      font: 400 clamp(4.2rem, 8vw, 8.3rem)/.76 Georgia, "Times New Roman", serif;
+      letter-spacing: -.075em;
+    }
+    .hero h1 span { display: block; }
+    .hero h1 .shift { margin-left: .32em; color: var(--amber); font-style: italic; }
+
+    .hero-copy { max-width: 32rem; margin: 0; color: var(--muted); font-size: clamp(.98rem, 1.8vw, 1.13rem); line-height: 1.72; }
+    .hero-copy strong { color: var(--ink); }
+
+    .plate {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      margin-top: 1.7rem;
+      padding: .58rem .85rem;
+      border: 2px solid #aba69b;
+      border-radius: .35rem;
+      color: #18191a;
+      background: #e9e5db;
+      box-shadow: inset 0 0 0 2px #242628;
+      font: 850 .72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: .12em;
+    }
+    .plate::before, .plate::after { content: ""; width: .3rem; aspect-ratio: 1; border-radius: 50%; background: #777; }
+
+    .car-stage { position: relative; min-height: 34rem; display: grid; place-items: center; }
+    .car-stage::before {
+      content: "";
+      position: absolute;
+      left: 5%;
+      right: -20vw;
+      bottom: 16%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.28) 20% 45%, transparent 45% 55%, rgba(255,255,255,.28) 55% 80%, transparent);
+    }
+
+    .sunset-disc {
+      position: absolute;
+      top: 6%;
+      right: 9%;
+      width: min(17rem, 34vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: linear-gradient(to bottom, #ffcc79, #e97745);
+      box-shadow: 0 0 5rem rgba(244, 124, 62, .16);
+      opacity: .88;
+    }
+
+    .sunset-disc::after {
+      content: "";
+      position: absolute;
+      inset: 46% 0 auto;
+      height: 2px;
+      background: var(--asphalt);
+      box-shadow: 0 10px 0 var(--asphalt), 0 20px 0 var(--asphalt), 0 30px 0 var(--asphalt), 0 40px 0 var(--asphalt);
+      opacity: .38;
+    }
+
+    .car-art {
+      position: relative;
+      z-index: 2;
+      width: min(48rem, 108%);
+      margin-left: -6%;
+      filter: drop-shadow(0 34px 25px rgba(0,0,0,.38));
+      animation: idle 4.5s ease-in-out infinite;
+    }
+
+    .car-art .wheel { transform-origin: center; }
+    .car-stage:hover .wheel { animation: wheelSpin 1.2s linear infinite; }
+    .headlight { animation: headlight 2.8s ease-in-out infinite alternate; }
+
+    .odometer {
+      position: absolute;
+      right: .2rem;
+      bottom: 1.6rem;
+      z-index: 3;
+      padding: .75rem .9rem;
+      border: 1px solid var(--line);
+      border-radius: .35rem;
+      background: rgba(12,13,15,.72);
+      backdrop-filter: blur(12px);
+      font: 700 .68rem/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: .08em;
+      color: var(--muted);
+    }
+    .odometer b { color: var(--amber); }
+
+    .section { padding: clamp(4.5rem, 9vw, 8rem) 0; }
+    .section-head { max-width: 43rem; margin-bottom: 2.6rem; }
+    .section-head h2 {
+      margin: 0;
+      font: 400 clamp(2.8rem, 6vw, 5.6rem)/.94 Georgia, serif;
+      letter-spacing: -.045em;
+      text-wrap: balance;
+    }
+    .section-head h2 em { color: var(--amber); font-weight: 400; }
+
+    .trip-board {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: .6rem;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .destination {
+      position: relative;
+      min-height: 29rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(255,177,74,.13), transparent 45%), #1b1d20;
+    }
+
+    .destination::after {
+      content: "408";
+      position: absolute;
+      right: -1rem;
+      bottom: -2.6rem;
+      color: rgba(255,255,255,.035);
+      font: 400 clamp(10rem, 25vw, 20rem)/1 Georgia, serif;
+      letter-spacing: -.1em;
+    }
+
+    .board-label { color: var(--muted); font-size: .66rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+    .destination h3 { position: relative; z-index: 1; margin: auto 0 1rem; font: 400 clamp(3rem, 7vw, 6.5rem)/.84 Georgia, serif; letter-spacing: -.06em; }
+    .destination h3 em { display: block; color: var(--amber); }
+    .destination p { position: relative; z-index: 1; margin: 0; color: var(--muted); line-height: 1.6; }
+
+    .road-plan { display: grid; align-content: center; padding: clamp(1.4rem, 4vw, 3rem); border-left: 1px solid var(--line); }
+    .stop { position: relative; display: grid; grid-template-columns: 2.4rem 1fr; gap: 1rem; padding: .75rem 0 1.8rem; }
+    .stop:last-child { padding-bottom: .75rem; }
+    .stop:not(:last-child)::after { content: ""; position: absolute; left: 1.15rem; top: 2.9rem; bottom: -.15rem; width: 1px; border-left: 1px dashed rgba(255,255,255,.2); }
+    .stop-mark { position: relative; z-index: 1; display: grid; place-items: center; width: 2.35rem; aspect-ratio: 1; border: 1px solid var(--line); border-radius: 50%; background: #151719; color: var(--amber); font: 800 .67rem/1 ui-monospace, monospace; }
+    .stop:first-child .stop-mark { border-color: var(--orange); box-shadow: 0 0 0 .35rem rgba(241,107,57,.08); }
+    .stop h4 { margin: .1rem 0 .3rem; font-size: .96rem; }
+    .stop p { margin: 0; color: var(--muted); font-size: .86rem; line-height: 1.5; }
+
+    .dashboard {
+      overflow: hidden;
+      padding: clamp(1.2rem, 3vw, 2rem);
+      border: 1px solid var(--line);
+      border-radius: 1.3rem;
+      background: radial-gradient(circle at 50% 130%, rgba(255,177,74,.12), transparent 45%), linear-gradient(#1c1e21, #101113);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06), var(--shadow);
+    }
+
+    .dash-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.2rem; color: var(--muted); font: 700 .65rem/1 ui-monospace, monospace; letter-spacing: .13em; text-transform: uppercase; }
+    .dash-light { display: inline-flex; align-items: center; gap: .45rem; color: var(--green); }
+    .dash-light::before { content: ""; width: .45rem; aspect-ratio: 1; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); }
+
+    .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; }
+    .counter {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(1.1rem, 3vw, 2rem) .5rem;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: .55rem;
+      text-align: center;
+      background: #0d0f10;
+      box-shadow: inset 0 -18px 25px rgba(0,0,0,.35);
+    }
+    .counter::before { content: ""; position: absolute; inset: 50% 0 auto; height: 1px; background: rgba(255,255,255,.07); }
+    .counter b { position: relative; display: block; color: var(--amber); text-shadow: 0 0 18px rgba(255,177,74,.25); font: 500 clamp(2.4rem, 7vw, 5.2rem)/.95 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: -.08em; }
+    .counter span { position: relative; display: block; margin-top: .6rem; color: var(--muted); font-size: .62rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+
+    .dash-bottom { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; }
+    .dash-bottom p { margin: 0; color: var(--muted); font-size: .78rem; }
+    .ghost-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      flex: 0 0 auto;
+      padding: .7rem .85rem;
+      border: 1px solid var(--line);
+      border-radius: .35rem;
+      color: var(--ink);
+      background: rgba(255,255,255,.035);
+      text-decoration: none;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .ghost-btn:hover { transform: translateY(-2px); border-color: rgba(255,177,74,.45); background: rgba(255,177,74,.07); }
+
+    .section-copy { max-width: 38rem; margin: 1rem 0 0; color: var(--muted); line-height: 1.65; }
+
+    .request-console {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: .75rem;
+      background: var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .request-card {
+      min-height: 24rem;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(1.4rem, 4vw, 2.7rem);
+      background:
+        radial-gradient(circle at 100% 0, rgba(255,177,74,.09), transparent 18rem),
+        #181a1d;
+    }
+
+    .request-card:nth-child(2) {
+      background:
+        radial-gradient(circle at 100% 0, rgba(142,179,209,.11), transparent 18rem),
+        #181a1d;
+    }
+
+    .request-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .request-code { color: var(--muted); font: 750 .64rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .17em; }
+    .request-icon { display: grid; place-items: center; width: 2.4rem; aspect-ratio: 1; border: 1px solid var(--line); border-radius: 50%; background: rgba(255,255,255,.035); }
+    .request-card h3 { margin: 2.3rem 0 .6rem; font: 400 clamp(2rem, 4vw, 3.2rem)/.95 Georgia, serif; letter-spacing: -.035em; }
+    .request-card > p { max-width: 28rem; margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.55; }
+    .request-control { margin-top: auto; padding-top: 1.6rem; }
+    .input-label { display: block; margin-bottom: .55rem; color: var(--paper); font-size: .66rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+
+    .request-input {
+      width: 100%;
+      padding: .9rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: .35rem;
+      color: var(--ink);
+      background: #101214;
+    }
+    .request-input::placeholder { color: #6f706f; }
+    .request-input:focus { border-color: var(--amber); outline: 2px solid rgba(255,177,74,.2); outline-offset: 0; }
+
+    .music-picks { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .85rem; }
+    .music-pill {
+      padding: .57rem .7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--paper);
+      background: rgba(255,255,255,.035);
+      font-size: .7rem;
+      font-weight: 720;
+    }
+    .music-pill:hover { transform: translateY(-2px); border-color: rgba(255,177,74,.48); }
+    .music-pill.is-selected { color: #24180b; border-color: var(--amber); background: var(--amber); }
+    .field-help { display: block; margin-top: .55rem; color: var(--muted); font-size: .69rem; line-height: 1.4; }
+
+    .request-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .85rem .95rem;
+      border: 1px solid var(--line);
+      border-top: 0;
+      border-radius: 0 0 .55rem .55rem;
+      color: var(--muted);
+      background: rgba(255,255,255,.025);
+      font-size: .7rem;
+    }
+    .request-footer strong { color: var(--green); font-weight: 750; }
+
+    .pit-pass {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: .7rem;
+      background: #e7e0d4;
+      color: #171819;
+      box-shadow: var(--shadow);
+    }
+
+    .pass-stub {
+      position: relative;
+      min-height: 35rem;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      color: var(--ink);
+      background: linear-gradient(145deg, rgba(255,177,74,.15), transparent 50%), #1b1d1f;
+    }
+    .pass-stub::after { content: ""; position: absolute; top: 0; right: -.6rem; bottom: 0; width: 1.1rem; background: radial-gradient(circle at center, #e7e0d4 0 .34rem, transparent .37rem) center/.95rem 1.3rem repeat-y; }
+    .pass-stub h2 { margin: auto 0 1rem; font: 400 clamp(3.4rem, 7vw, 6rem)/.82 Georgia, serif; letter-spacing: -.055em; }
+    .pass-stub h2 em { display: block; color: var(--amber); }
+    .pass-stub p { max-width: 24rem; margin: 0; color: var(--muted); line-height: 1.6; }
+    .pass-code { color: var(--amber); font: 700 .7rem/1 ui-monospace, monospace; letter-spacing: .17em; }
+
+    .pass-form { display: flex; flex-direction: column; justify-content: center; padding: clamp(1.5rem, 5vw, 3.8rem); }
+    .form-label { margin: 0 0 .8rem; color: #615e58; font-size: .66rem; font-weight: 850; letter-spacing: .18em; text-transform: uppercase; }
+    .rsvp-list { display: grid; gap: .65rem; }
+    .rsvp-choice {
+      display: grid;
+      grid-template-columns: 2rem 1fr auto;
+      align-items: center;
+      gap: .8rem;
+      width: 100%;
+      padding: .85rem .95rem;
+      border: 1px solid rgba(20,20,20,.16);
+      border-radius: .35rem;
+      color: #1b1c1d;
+      background: rgba(255,255,255,.32);
+      text-align: left;
+    }
+    .rsvp-choice:hover { transform: translateX(4px); border-color: rgba(20,20,20,.4); }
+    .rsvp-choice.is-selected { color: #fff; border-color: #242628; background: #242628; }
+    .rsvp-choice b, .rsvp-choice small { display: block; }
+    .rsvp-choice b { font-size: .87rem; }
+    .rsvp-choice small { margin-top: .18rem; color: #74716b; font-size: .72rem; }
+    .rsvp-choice.is-selected small { color: #aaa7a0; }
+    .rsvp-choice .check { opacity: 0; color: var(--amber); font-weight: 900; }
+    .rsvp-choice.is-selected .check { opacity: 1; }
+
+    .guest-name {
+      width: 100%;
+      margin: .8rem 0;
+      padding: .9rem 1rem;
+      border: 1px solid rgba(20,20,20,.18);
+      border-radius: .35rem;
+      color: #171819;
+      background: rgba(255,255,255,.42);
+    }
+    .guest-name::placeholder { color: #77736c; }
+    .pass-form .action-btn { width: 100%; }
+    .form-status { min-height: 1.35rem; margin: .7rem 0 0; color: #8b4327; font-size: .78rem; }
+
+    footer { padding: 2.5rem 0 1rem; color: var(--muted); text-align: center; font-size: .75rem; letter-spacing: .03em; }
+    footer b { color: var(--amber); font-weight: 700; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 1.4rem;
+      z-index: 120;
+      transform: translate(-50%, 2rem);
+      opacity: 0;
+      padding: .8rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: .35rem;
+      color: var(--ink);
+      background: rgba(13,14,16,.93);
+      box-shadow: var(--shadow);
+      transition: .3s ease;
+      pointer-events: none;
+      font-size: .82rem;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @keyframes roadMove { to { background-position-y: 5.3rem; } }
+    @keyframes bars { to { height: .8rem; } }
+    @keyframes idle { 50% { transform: translateY(-5px) rotate(-.25deg); } }
+    @keyframes wheelSpin { to { transform: rotate(360deg); } }
+    @keyframes headlight { to { opacity: .48; } }
+
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; text-align: center; padding-top: 7rem; }
+      .hero-copy { margin-inline: auto; }
+      .car-stage { min-height: 28rem; margin-top: -2rem; }
+      .plate { margin-inline: auto; }
+      .trip-board, .request-console, .pit-pass { grid-template-columns: 1fr; }
+      .road-plan { border-top: 1px solid var(--line); border-left: 0; }
+      .pass-stub { min-height: 24rem; }
+      .pass-stub::after { top: auto; right: 0; bottom: -.6rem; left: 0; width: auto; height: 1.1rem; background: radial-gradient(circle at center, #e7e0d4 0 .34rem, transparent .37rem) center/.95rem 1.3rem repeat-x; }
+    }
+
+    @media (max-width: 560px) {
+      .page-shell { padding-inline: .85rem; }
+      .sound-label { display: none; }
+      .hero { min-height: auto; }
+      .hero h1 { font-size: clamp(4rem, 20vw, 6rem); }
+      .car-stage { min-height: 22rem; }
+      .car-art { width: 118%; margin-left: -12%; }
+      .odometer { bottom: .3rem; right: 0; }
+      .countdown-grid { grid-template-columns: repeat(2, 1fr); }
+      .counter b { font-size: 3.6rem; }
+      .dash-bottom { align-items: flex-start; flex-direction: column; }
+      .request-card { min-height: 23rem; }
+      .request-footer { align-items: flex-start; flex-direction: column; }
+      .destination { min-height: 23rem; }
+      .pass-form { padding: 2rem 1.15rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="intro" id="intro">
+    <div class="intro-inner">
+      <div class="key-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none"><circle cx="19" cy="19" r="9" stroke-width="3"/><path d="M25.5 25.5 40 40M34 34l4-4M29.5 29.5l3.5-3.5" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <p class="kicker">Your passenger pass is ready</p>
+      <h1>Meet me for a <em>midnight drive.</em></h1>
+      <p class="intro-copy">Not actually at midnight. We roll out at 5 PM.</p>
+      <button class="start-btn" id="startBtn">Start the engine <span aria-hidden="true">↗</span></button>
+    </div>
+  </div>
+
+  <button class="sound-btn" id="soundBtn" aria-label="Toggle road-trip soundtrack" aria-pressed="false">
+    <span class="sound-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="sound-label">Sound off</span>
+  </button>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy-block">
+        <span class="route-chip"><i></i> Param’s birthday · Route 26</span>
+        <h1><span>Good roads.</span><span class="shift">Better company.</span></h1>
+        <p class="hero-copy">Param Srivatsva is taking another lap around the sun. You’re invited for a laid-back evening of <strong>music, food, stories, and absolutely no speed limits on fun.</strong></p>
+        <div class="plate" aria-label="Param, August 14">PARAM · 14 AUG</div>
+      </div>
+
+      <div class="car-stage" aria-label="A retro orange sports car at sunset">
+        <div class="sunset-disc" aria-hidden="true"></div>
+        <svg class="car-art" viewBox="0 0 960 450" role="img" aria-labelledby="carTitle carDesc">
+          <title id="carTitle">Retro orange sports car</title>
+          <desc id="carDesc">A stylized coupe waiting on a dark road at sunset.</desc>
+          <defs>
+            <linearGradient id="bodyPaint" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffad4c"/><stop offset=".5" stop-color="#ee7138"/><stop offset="1" stop-color="#a73329"/></linearGradient>
+            <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7f9ab1"/><stop offset="1" stop-color="#1c2630"/></linearGradient>
+            <radialGradient id="rim"><stop stop-color="#aaa"/><stop offset=".35" stop-color="#303337"/><stop offset="1" stop-color="#0a0b0c"/></radialGradient>
+          </defs>
+          <ellipse cx="489" cy="363" rx="355" ry="37" fill="#000" opacity=".38"/>
+          <path d="M129 302c5-30 23-48 57-55l94-18 104-103c19-18 42-26 68-26h154c38 0 70 13 96 38l79 77 75 16c39 9 62 33 68 72l4 28H117l12-29Z" fill="url(#bodyPaint)"/>
+          <path d="M314 219l91-81c14-12 30-18 49-18h58v100l-198-1Zm220 1V120h70c29 0 53 10 74 30l65 66-209 4Z" fill="url(#glass)" stroke="#d89558" stroke-width="5"/>
+          <path d="M514 121v99M284 230l458-8M172 253c112 22 489 23 687-12" fill="none" stroke="#6f2424" stroke-width="5" opacity=".55"/>
+          <path d="M149 299h98M781 272h117" stroke="#ffd993" stroke-width="17" stroke-linecap="round" class="headlight"/>
+          <path d="M125 320h108M811 306h104" stroke="#531715" stroke-width="10" stroke-linecap="round"/>
+          <path d="M365 244h46M625 242h45" stroke="#7d3028" stroke-width="8" stroke-linecap="round"/>
+          <path d="M251 332h501" stroke="#6e2823" stroke-width="15"/>
+          <g class="wheel" style="transform-origin:287px 331px"><circle cx="287" cy="331" r="75" fill="#08090a"/><circle cx="287" cy="331" r="45" fill="url(#rim)" stroke="#8f8f8e" stroke-width="4"/><circle cx="287" cy="331" r="12" fill="#e47c3f"/><path d="M287 291v80M247 331h80M259 303l56 56M315 303l-56 56" stroke="#969696" stroke-width="5"/></g>
+          <g class="wheel" style="transform-origin:757px 331px"><circle cx="757" cy="331" r="75" fill="#08090a"/><circle cx="757" cy="331" r="45" fill="url(#rim)" stroke="#8f8f8e" stroke-width="4"/><circle cx="757" cy="331" r="12" fill="#e47c3f"/><path d="M757 291v80M717 331h80M729 303l56 56M785 303l-56 56" stroke="#969696" stroke-width="5"/></g>
+          <path d="M150 326c8 22 26 34 53 35h19c-2-10-3-20-3-30 0-38 31-69 68-69s68 31 68 69c0 10-2 21-6 30h343c-3-10-4-20-4-30 0-38 31-69 69-69 37 0 68 31 68 69 0 10-2 20-5 30h37c31 0 51-13 61-39l10 9H117l33-5Z" fill="#c84e30" opacity=".7"/>
+        </svg>
+        <div class="odometer">ETA <b>14.08.26</b><br />IGNITION <b>17:00</b></div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="route">
+      <div class="section-head">
+        <p class="kicker">Destination locked</p>
+        <h2>The road leads to <em>408.</em></h2>
+      </div>
+      <div class="trip-board">
+        <div class="destination">
+          <span class="board-label">Final destination</span>
+          <div>
+            <h3>Zenith <em>Flat No. 408</em></h3>
+            <p>Friday · 14 August 2026<br />Arrival window opens at 5:00 PM</p>
+          </div>
+        </div>
+        <div class="road-plan" aria-label="Party route">
+          <div class="stop"><div class="stop-mark">17</div><div><h4>Ignition</h4><p>Doors open at 5 PM. Come in, settle down, claim the good seat.</p></div></div>
+          <div class="stop"><div class="stop-mark">♫</div><div><h4>Cruise mode</h4><p>Calm psych grooves, food, photos, and stories we may regret later.</p></div></div>
+          <div class="stop"><div class="stop-mark">∞</div><div><h4>No fixed exit</h4><p>Stay for the cake. Stay longer for the people.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="countdown">
+      <div class="section-head"><p class="kicker">Dashboard check</p><h2>Departure in...</h2></div>
+      <div class="dashboard">
+        <div class="dash-top"><span>Param’s midnight drive</span><span class="dash-light">Route active</span></div>
+        <div class="countdown-grid" aria-live="polite">
+          <div class="counter"><b id="days">000</b><span>Days</span></div>
+          <div class="counter"><b id="hours">00</b><span>Hours</span></div>
+          <div class="counter"><b id="minutes">00</b><span>Minutes</span></div>
+          <div class="counter"><b id="seconds">00</b><span>Seconds</span></div>
+        </div>
+        <div class="dash-bottom"><p>Save the route now. Future you hates last-minute navigation.</p><button class="ghost-btn" id="calendarBtn">＋ Add to calendar</button></div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="suggestions">
+      <div class="section-head">
+        <p class="kicker">Co-driver requests · optional</p>
+        <h2>Help tune <em>the ride.</em></h2>
+        <p class="section-copy">Got a craving or a music mood in mind? Leave Param a suggestion—or skip straight past if you’re happy to be surprised.</p>
+      </div>
+      <div class="request-console">
+        <article class="request-card">
+          <div class="request-top"><span class="request-code">01 / PIT-STOP MENU</span><span class="request-icon" aria-hidden="true">🍽️</span></div>
+          <h3>What belongs on the table?</h3>
+          <p>Suggest a dish, snack, drink, or dessert you would happily take a detour for.</p>
+          <div class="request-control">
+            <label class="input-label" for="menuSuggestion">Your menu suggestion</label>
+            <input class="request-input" id="menuSuggestion" type="text" maxlength="80" placeholder="e.g. momos, pizza, brownies..." />
+            <small class="field-help">One excellent idea is plenty.</small>
+          </div>
+        </article>
+
+        <article class="request-card">
+          <div class="request-top"><span class="request-code">02 / PASSENGER AUX</span><span class="request-icon" aria-hidden="true">🎵</span></div>
+          <h3>What should be on the speakers?</h3>
+          <p>Choose a cruise setting, then add a genre, artist, or song vibe if you want to get specific.</p>
+          <div class="request-control">
+            <span class="input-label" id="musicVibeLabel">Choose a music vibe</span>
+            <div class="music-picks" role="radiogroup" aria-labelledby="musicVibeLabel">
+              <button class="music-pill" type="button" role="radio" aria-checked="false" data-music="Psychedelic chill">Psychedelic chill</button>
+              <button class="music-pill" type="button" role="radio" aria-checked="false" data-music="Indie sunset">Indie sunset</button>
+              <button class="music-pill" type="button" role="radio" aria-checked="false" data-music="Desi cruise">Desi cruise</button>
+              <button class="music-pill" type="button" role="radio" aria-checked="false" data-music="Lo-fi / R&B">Lo-fi / R&amp;B</button>
+            </div>
+            <label class="input-label" for="musicSuggestion">Add your own</label>
+            <input class="request-input" id="musicSuggestion" type="text" maxlength="60" placeholder="Genre, artist, or song vibe..." />
+            <small class="field-help">Tap a selected vibe again to clear it.</small>
+          </div>
+        </article>
+      </div>
+      <div class="request-footer">
+        <span>Nothing here is required for RSVP.</span>
+        <strong id="requestSummary" aria-live="polite">No requests added</strong>
+      </div>
+    </section>
+
+    <section class="section reveal" id="rsvp">
+      <div class="pit-pass">
+        <div class="pass-stub">
+          <span class="pass-code">GUEST PASS · PS-1408</span>
+          <div><h2>Claim your <em>seat.</em></h2><p>Choose a lane and enter your name. Your reply will open as a ready-to-send WhatsApp transmission.</p></div>
+        </div>
+        <div class="pass-form">
+          <p class="form-label">Select your lane</p>
+          <div class="rsvp-list" role="radiogroup" aria-label="RSVP response">
+            <button class="rsvp-choice" type="button" role="radio" aria-checked="false" data-answer="Shotgun! I’m riding in 🚗"><span>🏁</span><span><b>Shotgun — I’m in</b><small>Seat reserved. Playlist opinions incoming.</small></span><span class="check">✓</span></button>
+            <button class="rsvp-choice" type="button" role="radio" aria-checked="false" data-answer="I might join the convoy 🚦"><span>🚦</span><span><b>Joining the convoy... maybe</b><small>Waiting for the signal to turn green.</small></span><span class="check">✓</span></button>
+            <button class="rsvp-choice" type="button" role="radio" aria-checked="false" data-answer="I’ll catch the next lap, but happy birthday! 🛣️"><span>🛣️</span><span><b>Catching the next lap</b><small>Can’t make this drive, sending good miles.</small></span><span class="check">✓</span></button>
+          </div>
+          <input class="guest-name" id="guestName" type="text" maxlength="40" autocomplete="name" placeholder="Name on your driving licence" aria-label="Your name" />
+          <button class="action-btn" id="rsvpBtn">Send my road signal ↗</button>
+          <p class="form-status" id="rsvpStatus" role="status"></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>One evening. One destination. <b>Be there.</b></footer>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    const partyDate = new Date('2026-08-14T17:00:00+05:30');
+    const intro = document.querySelector('#intro');
+    const startBtn = document.querySelector('#startBtn');
+    const soundBtn = document.querySelector('#soundBtn');
+    const soundLabel = soundBtn.querySelector('.sound-label');
+    const toast = document.querySelector('#toast');
+    let audioContext, masterGain, filter, pulseTimer;
+    let isPlaying = false;
+    let selectedAnswer = '';
+    let selectedMusic = '';
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove('show'), 2300);
+    }
+
+    function buildSoundtrack() {
+      if (audioContext) return;
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      audioContext = new AudioCtx();
+      masterGain = audioContext.createGain();
+      masterGain.gain.value = 0;
+      masterGain.connect(audioContext.destination);
+      filter = audioContext.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = 760;
+      filter.Q.value = 1.1;
+      filter.connect(masterGain);
+      const padBus = audioContext.createGain();
+      padBus.gain.value = .15;
+      padBus.connect(filter);
+      [73.42, 110, 146.83, 185].forEach((frequency, index) => {
+        const oscillator = audioContext.createOscillator();
+        const voice = audioContext.createGain();
+        oscillator.type = index === 0 ? 'triangle' : 'sine';
+        oscillator.frequency.value = frequency;
+        oscillator.detune.value = (index - 1) * 3;
+        voice.gain.value = index === 0 ? .32 : .11;
+        oscillator.connect(voice).connect(padBus);
+        oscillator.start();
+      });
+      const drift = audioContext.createOscillator();
+      const driftDepth = audioContext.createGain();
+      drift.frequency.value = .06;
+      driftDepth.gain.value = 240;
+      drift.connect(driftDepth).connect(filter.frequency);
+      drift.start();
+    }
+
+    function enginePulse() {
+      if (!audioContext || !isPlaying) return;
+      const now = audioContext.currentTime;
+      const osc = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(48, now);
+      osc.frequency.exponentialRampToValueAtTime(72, now + .18);
+      gain.gain.setValueAtTime(.0001, now);
+      gain.gain.exponentialRampToValueAtTime(.06, now + .04);
+      gain.gain.exponentialRampToValueAtTime(.0001, now + .42);
+      osc.connect(gain).connect(filter);
+      osc.start(now);
+      osc.stop(now + .45);
+    }
+
+    async function toggleSound(force) {
+      buildSoundtrack();
+      if (!audioContext) {
+        showToast('Audio is not supported in this browser');
+        return;
+      }
+      if (audioContext.state === 'suspended') await audioContext.resume();
+      const next = typeof force === 'boolean' ? force : !isPlaying;
+      const now = audioContext.currentTime;
+      masterGain.gain.cancelScheduledValues(now);
+      masterGain.gain.setValueAtTime(Math.max(masterGain.gain.value, .0001), now);
+      masterGain.gain.exponentialRampToValueAtTime(next ? .38 : .0001, now + .9);
+      isPlaying = next;
+      soundBtn.classList.toggle('is-playing', isPlaying);
+      soundBtn.setAttribute('aria-pressed', String(isPlaying));
+      soundLabel.textContent = isPlaying ? 'Sound on' : 'Sound off';
+      clearInterval(pulseTimer);
+      if (isPlaying) pulseTimer = setInterval(enginePulse, 4100);
+    }
+
+    document.body.style.overflow = 'hidden';
+    startBtn.addEventListener('click', async () => {
+      intro.classList.add('is-gone');
+      document.body.style.overflow = '';
+      await toggleSound(true);
+      enginePulse();
+    });
+    soundBtn.addEventListener('click', () => toggleSound());
+
+    function updateCountdown() {
+      const distance = partyDate.getTime() - Date.now();
+      if (distance <= 0) {
+        document.querySelector('#countdown .section-head h2').textContent = 'We have arrived.';
+        ['days', 'hours', 'minutes', 'seconds'].forEach(id => document.querySelector(`#${id}`).textContent = '00');
+        return;
+      }
+      const values = {
+        days: Math.floor(distance / 86400000),
+        hours: Math.floor((distance % 86400000) / 3600000),
+        minutes: Math.floor((distance % 3600000) / 60000),
+        seconds: Math.floor((distance % 60000) / 1000)
+      };
+      document.querySelector('#days').textContent = String(values.days).padStart(3, '0');
+      document.querySelector('#hours').textContent = String(values.hours).padStart(2, '0');
+      document.querySelector('#minutes').textContent = String(values.minutes).padStart(2, '0');
+      document.querySelector('#seconds').textContent = String(values.seconds).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+    function updateRequestSummary() {
+      const hasMenuRequest = Boolean(document.querySelector('#menuSuggestion').value.trim());
+      const hasMusicRequest = Boolean(selectedMusic || document.querySelector('#musicSuggestion').value.trim());
+      const requestCount = Number(hasMenuRequest) + Number(hasMusicRequest);
+      const summary = document.querySelector('#requestSummary');
+      summary.textContent = requestCount === 0
+        ? 'No requests added'
+        : `${requestCount} request${requestCount === 1 ? '' : 's'} ready for RSVP`;
+    }
+
+    document.querySelectorAll('.music-pill').forEach(choice => {
+      choice.addEventListener('click', () => {
+        const isAlreadySelected = choice.classList.contains('is-selected');
+        document.querySelectorAll('.music-pill').forEach(item => {
+          item.classList.remove('is-selected');
+          item.setAttribute('aria-checked', 'false');
+        });
+        if (isAlreadySelected) {
+          selectedMusic = '';
+        } else {
+          choice.classList.add('is-selected');
+          choice.setAttribute('aria-checked', 'true');
+          selectedMusic = choice.dataset.music;
+        }
+        updateRequestSummary();
+      });
+    });
+
+    document.querySelector('#menuSuggestion').addEventListener('input', updateRequestSummary);
+    document.querySelector('#musicSuggestion').addEventListener('input', updateRequestSummary);
+
+    document.querySelectorAll('.rsvp-choice').forEach(choice => {
+      choice.addEventListener('click', () => {
+        document.querySelectorAll('.rsvp-choice').forEach(item => {
+          item.classList.remove('is-selected');
+          item.setAttribute('aria-checked', 'false');
+        });
+        choice.classList.add('is-selected');
+        choice.setAttribute('aria-checked', 'true');
+        selectedAnswer = choice.dataset.answer;
+        document.querySelector('#rsvpStatus').textContent = '';
+      });
+    });
+
+    document.querySelector('#rsvpBtn').addEventListener('click', () => {
+      const nameField = document.querySelector('#guestName');
+      const name = nameField.value.trim();
+      const status = document.querySelector('#rsvpStatus');
+      if (!selectedAnswer) { status.textContent = 'Pick your lane first.'; return; }
+      if (!name) { status.textContent = 'Your pass needs a name.'; nameField.focus(); return; }
+      const menuSuggestion = document.querySelector('#menuSuggestion').value.trim();
+      const customMusic = document.querySelector('#musicSuggestion').value.trim();
+      const musicSuggestion = [selectedMusic, customMusic].filter(Boolean).join(' + ');
+      const requestLines = [];
+      if (menuSuggestion) requestLines.push(`🍽️ Menu idea: ${menuSuggestion}`);
+      if (musicSuggestion) requestLines.push(`🎵 Music vibe: ${musicSuggestion}`);
+      const coDriverRequests = requestLines.length ? `\n\nCo-driver requests (optional):\n${requestLines.join('\n')}` : '';
+      const message = `Hey Param! ${selectedAnswer}${coDriverRequests}\n\n— ${name}\nRe: your birthday drive on 14 August at Zenith, Flat 408`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+      status.textContent = 'Signal ready — choose Param in WhatsApp.';
+    });
+
+    document.querySelector('#calendarBtn').addEventListener('click', () => {
+      const calendar = [
+        'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Param Midnight Drive//EN',
+        'BEGIN:VEVENT', 'UID:param-birthday-drive-2026@example.local',
+        'DTSTAMP:20260813T120000Z', 'DTSTART:20260814T113000Z', 'DTEND:20260814T153000Z',
+        'SUMMARY:Param Srivatsva’s Birthday — Midnight Drive',
+        'LOCATION:Zenith\\, Flat No. 408',
+        'DESCRIPTION:Good roads. Better company. Come celebrate Param’s birthday!',
+        'END:VEVENT', 'END:VCALENDAR'
+      ].join('\r\n');
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(new Blob([calendar], { type: 'text/calendar' }));
+      link.download = 'Param-Birthday-Midnight-Drive.ics';
+      link.click();
+      URL.revokeObjectURL(link.href);
+      showToast('Route added to your calendar');
+    });
+  </script>
+</body>
+</html>
